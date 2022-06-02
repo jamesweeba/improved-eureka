@@ -15,6 +15,7 @@
     "socket.io-client": "^4.5.1",
     "web-vitals": "^2.1.4"
   },
+  "proxy": "https://wee-chat-chat.herokuapp.com",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
