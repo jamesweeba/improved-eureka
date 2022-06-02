@@ -7,7 +7,7 @@ function header(props){
         <div className="header">
         <Popup trigger={<span onClick={handleMenuClick} style={{cursor:"pointer",color:"white"}} >&#9776;</span>} 
          position="bottom center">
-          <div onClick={logout} style={{textAlign:"center",cursor:"pointer"}}>Logout</div>
+          <div onClick={()=>logout({returnTo:window.location.origin})} style={{textAlign:"center",cursor:"pointer"}}>Logout</div>
          
         </Popup>
       </div>
