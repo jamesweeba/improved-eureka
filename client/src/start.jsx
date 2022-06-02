@@ -4,7 +4,7 @@ import './App.css';
 import App from './App';
 import io from 'socket.io-client';
 // let socket = io.connect("http://localhost:3001");
-const URL="https://wee-chat-wee.herokuapp.com/" || "http://localhost:3001";
+const URL= "https://wee-chat-chat.herokuapp.com/"||"https://wee-chat-wee.herokuapp.com/" || "http://localhost:3001";
 
 
 
