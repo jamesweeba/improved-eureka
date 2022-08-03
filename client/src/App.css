@@ -61,6 +61,7 @@
   border: 2px solid whitesmoke;
   margin: 1px;
   border-radius: 2px;
+  
 }
 
 .menu-item:hover {
@@ -109,8 +110,9 @@
 
 .header {
   background: #039191;
-  padding: 38px;;
- 
+  padding: 38px;
+  ;
+
   margin: 0% auto;
   width: 48%;
   display: flex;
@@ -138,28 +140,38 @@
   border-radius: 7px;
 }
 
-.but > button{
+.but>button {
   padding: 10px
 }
-.but > button:hover{
-  cursor :pointer;
+
+.but>button:hover {
+  cursor: pointer;
 }
 
-.mainHeader{
+.mainHeader {
   width: 100%;
-background: teal;
-height: 95px;
-position: absolute;
+  background: teal;
+  height: 95px;
+  position: absolute;
 }
-.footer{
-position: fixed;
-left: 0;
-bottom: 0;
-width: 100%;
-background-color:teal;
-height: 40px;
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: teal;
+  height: 40px;
 
 
+}
+
+.name {
+  display: flex;
+  flex-direction: row-reverse;
+  font-size: 20px;
+  color: white;
+  margin: 30px;
 }
 
 @keyframes App-logo-spin {
@@ -171,4 +183,3 @@ height: 40px;
     transform: rotate(360deg);
   }
 }
-

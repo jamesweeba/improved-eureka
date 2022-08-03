@@ -10,6 +10,7 @@ function header(props){
           <div onClick={()=>logout({returnTo:window.location.origin})} style={{textAlign:"center",cursor:"pointer"}}>Logout</div>
          
         </Popup>
+        
       </div>
 
 

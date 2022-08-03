@@ -11,6 +11,7 @@ import Footer from './components/footer';
 
 
 
+
 function App(props) {
   let { socket, user, logout } = props;
   socket.auth = user;
@@ -25,7 +26,8 @@ function App(props) {
   let [inputMessage, setInputMessage] = useState("");
 
   socket.on("users", (connectedUers) => {
-    setUsers(connectedUers)
+    let filter = connectedUers.filter(item => item.username != user.email)
+    setUsers(filter)
   });
 
   let handleClick = (payload) => {
@@ -44,19 +46,7 @@ function App(props) {
     console.log("who do u know ")
   }
 
-  let handleMessageSend = () => {
-    if (id && inputMessage) {
-      let messageDate = {
-        to: id,
-        msg: inputMessage,
-        from: fromId
-      }
-      socket.emit('getMsg', messageDate);
-      setMessage((list) => [...list, messageDate]);
-      setPrivateMessage((list) => [...list, messageDate])
-      setInputMessage("")
-    }
-  }
+
   let handleChange = (value) => {
     setInputMessage(value)
   }
@@ -86,7 +76,7 @@ function App(props) {
 
     }
 
-    if(!id){
+    if (!id) {
       console.log("please select some to chat")
       setId("")
     }
@@ -96,19 +86,16 @@ function App(props) {
   return (
 
     <>
-    <MainHeader/>
-      <div style={{ margin: "0% auto",zIndex:"5",position:"relative" }}>
+      <MainHeader user={socket.auth} />
+      <div style={{ margin: "0% auto", zIndex: "5", position: "relative" }}>
         <Header logout={logout} handleMenuClick={handleMenuClick} />
         <div className="App">
           <Vertival />
-          <LeftMenu style1={background} index1={index} clickHandler={handleClick} users={users} />
+          <LeftMenu style1={background} index1={index} clickHandler={handleClick} users={users} user={socket.auth} />
           <MessagePanel fromId={fromId} changeHandler={handleChange} message={privateMessage} inputMessage={inputMessage} id={id} handleSubmit={handleSubmit} />
         </div>
-
       </div>
-
-      
-      <Footer/>
+      <Footer />
     </>
 
   );

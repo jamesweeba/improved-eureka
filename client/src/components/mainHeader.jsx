@@ -1,8 +1,12 @@
 
-
-function mainHeader(){
+import User from "./user"
+function mainHeader(props) {
+    let { user } = props
+  
     return (
-        <div className="mainHeader"></div>
+        <div className="mainHeader">
+            <User user={user} />
+        </div>
     )
 }
 
