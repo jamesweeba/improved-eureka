@@ -11,7 +11,7 @@ import Footer from './components/footer';
 
 
 
-
+// https://carding.link/
 function App(props) {
   let { socket, user, logout } = props;
   socket.auth = user;

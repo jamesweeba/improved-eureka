@@ -5,7 +5,7 @@ function user(props) {
     let { email } = user
     return (
         <div className="name">
-            <div>{email}</div>
+            <div>Welcome {email}</div>
         </div>
     )
 }
