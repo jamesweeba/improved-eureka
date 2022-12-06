@@ -1,5 +1,4 @@
 
-
 function user(props) {
     let { user } = props
     let { email } = user

@@ -9,16 +9,12 @@ function messagePanel(props) {
         <>
             <div className="message-panel">
                 <Message fromId={fromId} message={message} />
-                
                     <form onSubmit={handleSubmit}>
                     <div className="sender">
                         <InputPanel changeHandler={changeHandler} inputMessage={inputMessage}/>
                         <Button id={id} onSendMessage={onSendMessage} />
                         </div>
                     </form>
-
-               
-
             </div>
 
         </>

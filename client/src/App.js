@@ -1,14 +1,12 @@
-import logo from './logo.svg';
+
 import './App.css';
 // import io from 'socket.io-client';
 import { useEffect, useState } from "react";
-import LeftMenu from "./components/leftMenu";
-import MessagePanel from "./components/messagePanel";
-import Header from "./components/header";
-import Vertival from "./components/vertical"
 import MainHeader from './components/mainHeader';
 import Footer from './components/footer';
-
+import LeftPanel from './components/leftPanel';
+import RightPanel from './components/rightPanel';
+import MiddlePanel from './components/middlePanel';
 
 
 // https://carding.link/
@@ -24,9 +22,10 @@ function App(props) {
   let [message, setMessage] = useState([]);
   let [privateMessage, setPrivateMessage] = useState([]);
   let [inputMessage, setInputMessage] = useState("");
-
+  let [display, setDisplay] = useState(false);
+  let [noUser, setNoUser] = useState(false);
   socket.on("users", (connectedUers) => {
-    let filter = connectedUers.filter(item => item.username != user.email)
+    let filter = connectedUers.filter(item => item.username != user.email);
     setUsers(filter)
   });
 
@@ -39,21 +38,18 @@ function App(props) {
       return (it.to == fromId && it.from == item.user_id || it.to == item.user_id && it.from == fromId)
     });
     setPrivateMessage([...privateM])
-    console.log(privateM, privateMessage);
-  }
+    setNoUser(true)
 
-  let handleMenuClick = () => {
-    console.log("who do u know ")
   }
 
 
   let handleChange = (value) => {
     setInputMessage(value)
   }
-
   socket.off('send').on('send', (data) => {
-    setMessage((list) => [...list, data])
-    setPrivateMessage((list) => [...list, data])
+    console.log(data);
+    setMessage(list => [...list, data])
+    setPrivateMessage(list => [...list, data])
 
   });
 
@@ -73,30 +69,27 @@ function App(props) {
       socket.emit('getMsg', messageDate);
       setMessage((list) => [...list, messageDate]);
       setPrivateMessage((list) => [...list, messageDate])
-
     }
-
     if (!id) {
       console.log("please select some to chat")
       setId("")
+      setDisplay(true)
     }
-
   };
 
-  return (
 
-    <>
+
+  return (
+    <div className='mainPage'>
       <MainHeader user={socket.auth} />
-      <div style={{ margin: "0% auto", zIndex: "5", position: "relative" }}>
-        <Header logout={logout} handleMenuClick={handleMenuClick} />
-        <div className="App">
-          <Vertival />
-          <LeftMenu style1={background} index1={index} clickHandler={handleClick} users={users} user={socket.auth} />
-          <MessagePanel fromId={fromId} changeHandler={handleChange} message={privateMessage} inputMessage={inputMessage} id={id} handleSubmit={handleSubmit} />
-        </div>
+      <div className='container'>
+        <LeftPanel index={index} style1={background} clickHandler={handleClick} users={users} user={socket.auth} />
+        <MiddlePanel fromId={fromId} changeHandler={handleChange} message={privateMessage} inputMessage={inputMessage} 
+                      id={id} show={noUser} handleSubmit={handleSubmit} users={users} />
+        <RightPanel logout={logout} />
       </div>
       <Footer />
-    </>
+    </div>
 
   );
 }
