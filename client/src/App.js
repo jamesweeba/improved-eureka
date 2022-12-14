@@ -26,6 +26,7 @@ function App(props) {
   let [noUser, setNoUser] = useState(false);
   socket.on("users", (connectedUers) => {
     let filter = connectedUers.filter(item => item.username != user.email);
+    console.log(filter)
     setUsers(filter)
   });
 
