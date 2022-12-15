@@ -9,9 +9,7 @@ const port=process.env.PORT || 3001
 app.use(cors());
 let io = new Server(server, { cors: { origin: "*", methods: ["GET", "POST"] } });
 app.get('/',(req,res)=>{
-   
      app.use(express.static(path.join(__dirname,'client/build')))
-     
     return res.sendFile(path.join(__dirname,'client/build','index.html'));
 })
 

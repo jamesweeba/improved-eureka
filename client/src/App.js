@@ -22,7 +22,6 @@ function App(props) {
   let [message, setMessage] = useState([]);
   let [privateMessage, setPrivateMessage] = useState([]);
   let [inputMessage, setInputMessage] = useState("");
-  let [display, setDisplay] = useState(false);
   let [noUser, setNoUser] = useState(false);
   socket.on("users", (connectedUers) => {
     let filter = connectedUers.filter(item => item.username != user.email);
