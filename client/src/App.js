@@ -89,7 +89,7 @@ function App(props) {
                       id={id} show={noUser} handleSubmit={handleSubmit} users={users} />
         <RightPanel logout={logout} />
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
 
   );
