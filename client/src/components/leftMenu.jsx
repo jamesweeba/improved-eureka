@@ -7,7 +7,7 @@ function leftMenu(props) {
     //border-radius: 16px;
     let col = { display: "flex", "justify-content": "center", "align-items": "center" }
     let label = {
-        "font-size": "61%",
+        "font-size": "142%",
         "font-style": "oblique"
     }
    
