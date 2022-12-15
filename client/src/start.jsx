@@ -4,7 +4,7 @@ import './App.css';
 import App from './App';
 import io from 'socket.io-client';
 // let socket = io.connect("http://localhost:3001");
-const URL= "http://localhost:3001"||""
+const URL= "http://localhost:3001"||"https://wee-chat.onrender.com"
 
 function Start() {
     const socket = io(URL, { autoConnect: false ,secure: true })
